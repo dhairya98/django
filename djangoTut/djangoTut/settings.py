@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myApp'
+    'myApp',
+    'tailwind',
+    'theme',
 ]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS=['127.0.0.1']
+NPM_BIN_PATH='/Users/dhairyaanchal/.nvm/versions/node/v22.20.0/bin/npm'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
