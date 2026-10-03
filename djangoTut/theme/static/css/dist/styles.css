@@ -213,6 +213,9 @@
   .bg-indigo-50 {
     background-color: var(--color-indigo-50);
   }
+  .text-center {
+    text-align: center;
+  }
   .font-serif {
     font-family: var(--font-serif);
   }
@@ -230,6 +233,9 @@
   }
   .text-black {
     color: var(--color-black);
+  }
+  .font-stretch-50\% {
+    font-stretch: 50%;
   }
 }
 @property --tw-leading {
