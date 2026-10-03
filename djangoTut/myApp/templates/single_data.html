@@ -1,0 +1,77 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.name }} | Record Detail</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden">
+
+    <!-- Decorative Gradient Background Glows -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40">
+        <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Main Card Container Wrapper -->
+    <div class="relative z-10 max-w-4xl w-full bg-slate-900 border border-slate-800/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row hover:border-slate-700/80 transition-colors duration-300">
+        
+        <!-- Left Column: Visual Showcase Display -->
+        <div class="w-full md:w-1/2 relative bg-slate-950 min-h-[320px] md:min-h-full flex items-center justify-center group overflow-hidden">
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            {% else %}
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-950 to-purple-950 flex flex-col items-center justify-center text-slate-700">
+                    <span class="text-5xl mb-2">🖼️</span>
+                    <span class="text-xs text-slate-500 font-medium tracking-wide">No image uploaded</span>
+                </div>
+            {% endif %}
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-slate-900/40"></div>
+        </div>
+
+        <!-- Right Column: Meta Metrics & Description Breakdown -->
+        <div class="w-full md:w-1/2 p-8 sm:p-10 flex flex-col justify-between relative bg-slate-900">
+            <div>
+                <!-- Top Context Tagline Row -->
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <span class="bg-indigo-500/10 text-indigo-400 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-md border border-indigo-500/20 shadow-sm">
+                        {{ item.get_tech_display }}
+                    </span>
+                    <span class="text-[11px] font-mono text-slate-500">ID: #{{ item.id }}</span>
+                </div>
+
+                <!-- Main Target Header Name Title -->
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight mb-4 break-words">
+                    {{ item.name }}
+                </h1>
+
+                <!-- Object Variable Meta Attributes Properties -->
+                <div class="space-y-3 mt-6 border-t border-slate-800/80 pt-6">
+                    <div class="flex items-center justify-between text-sm py-1.5 border-b border-slate-800/40">
+                        <span class="text-slate-400 font-medium">Stack Identifier</span>
+                        <span class="font-mono text-slate-300 text-xs bg-slate-950 px-2 py-0.5 rounded border border-slate-800">{{ item.tech }}</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm py-1.5 border-b border-slate-800/40">
+                        <span class="text-slate-400 font-medium">Creation Timestamp</span>
+                        <span class="text-slate-300 text-xs">{{ item.date_added|date:"M d, Y • H:i" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Return Route Navigation Controls -->
+            <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row gap-3">
+                <a href="{% url 'all_data' %}" class="w-full text-center bg-slate-800 hover:bg-slate-700/80 text-slate-200 font-semibold px-5 py-3 rounded-xl border border-slate-700/50 transition-all duration-200 text-sm flex items-center justify-center gap-2 group">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+                    </svg>
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
