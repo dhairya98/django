@@ -1,15 +1,3 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django and Dhairya</title>
-    <!-- <link rel="stylesheet" href="../../djangoTut/static/style.css"> -->
-     <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-    <h1>Django and Dhairya</h1>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block Title %}Home Page{% endblock  %}
+{% block content %}<h1>Content from Home Page<h2>{% endblock  %}
